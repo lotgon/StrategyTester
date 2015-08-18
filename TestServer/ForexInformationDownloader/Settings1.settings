@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ForexInformationDownloader" GeneratedClassName="Settings1">
+  <Profiles />
+  <Settings>
+    <Setting Name="NewsPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">c:\!log\news.csv</Value>
+    </Setting>
+    <Setting Name="StartHour" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">6</Value>
+    </Setting>
+    <Setting Name="Symbols" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">AUDJPY, AUDNZD, AUDUSD, CADJPY, CHFJPY, EURAUD, EURCAD, EURCHF, EURGBP, EURJPY, EURNOK, EURSEK, EURUSD, GBPCHF, GBPJPY, GBPUSD, NZDUSD, USDCAD, USDCHF, USDJPY, USDNOK, USDSEK</Value>
+    </Setting>
+    <Setting Name="TimeoutMinutes" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">5</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,226 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      7799,        217]
+NotebookOptionsPosition[      7556,        204]
+NotebookOutlinePosition[      7899,        219]
+CellTagsIndexPosition[      7856,        216]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"root", " ", "=", " ", 
+   RowBox[{"NotebookDirectory", "[", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"first", " ", "=", " ", "\"\<first.dat\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"second", " ", "=", " ", "\"\<second.dat\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"first", " ", "=", " ", 
+   RowBox[{"Import", "[", 
+    RowBox[{
+     RowBox[{"StringJoin", "[", 
+      RowBox[{"root", ",", "first"}], "]"}], ",", " ", "\"\<Table\>\""}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"second", " ", "=", " ", 
+    RowBox[{"Import", "[", 
+     RowBox[{
+      RowBox[{"StringJoin", "[", 
+       RowBox[{"root", ",", "second"}], "]"}], ",", " ", "\"\<Table\>\""}], 
+     "]"}]}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gFirst", " ", "=", 
+   RowBox[{"ListPlot3D", "[", 
+    RowBox[{"first", ",", " ", 
+     RowBox[{"AxesLabel", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"\"\<TP\>\"", ",", " ", "\"\<Shift\>\""}], "}"}]}], ",", 
+     RowBox[{"PlotStyle", "\[Rule]", " ", "Green"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"gSecond", " ", "=", 
+    RowBox[{"ListPlot3D", "[", 
+     RowBox[{"second", ",", " ", 
+      RowBox[{"AxesLabel", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"\"\<TP\>\"", ",", " ", "\"\<Shift\>\""}], "}"}]}], ",", 
+      RowBox[{"PlotStyle", "\[Rule]", " ", "Blue"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Find", " ", "absolute", " ", "minumum", " ", "and", " ", "maximum"}], " ",
+    "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"values", " ", "=", " ", 
+   RowBox[{"Join", "[", 
+    RowBox[{
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"first", "[", 
+        RowBox[{"[", 
+         RowBox[{"i", ",", " ", "3"}], "]"}], "]"}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", " ", 
+         RowBox[{"Length", "[", "first", "]"}]}], "}"}]}], "]"}], ",", " ", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"second", "[", 
+        RowBox[{"[", 
+         RowBox[{"i", ",", " ", "3"}], "]"}], "]"}], ",", " ", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", " ", 
+         RowBox[{"Length", "[", "second", "]"}]}], "}"}]}], "]"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"minimum", " ", "=", " ", 
+   RowBox[{"Min", "[", "values", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"maximum", " ", "=", " ", 
+   RowBox[{"Max", "[", "values", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"delta", " ", "=", 
+    RowBox[{
+     RowBox[{"(", " ", 
+      RowBox[{"maximum", " ", "-", " ", "minimum"}], ")"}], "/", "5"}]}], 
+   ";"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{"prepare", " ", "maximum", " ", "graph"}], " ", 
+   "*)"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"MaximumGraph", "[", 
+     RowBox[{"data_", ",", " ", "a_", ",", "b_"}], "]"}], ":=", 
+    RowBox[{"Module", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "values", ",", "value", ",", " ", "tp", ",", "shift", ",", " ", "t", 
+        ",", " ", "i"}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"values", " ", "=", " ", 
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"data", "[", 
+           RowBox[{"[", 
+            RowBox[{"i", ",", "3"}], "]"}], "]"}], ",", " ", 
+          RowBox[{"{", 
+           RowBox[{"i", ",", " ", 
+            RowBox[{"Length", "[", "data", "]"}]}], "}"}]}], "]"}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"value", " ", "=", " ", 
+        RowBox[{"Max", "[", "values", "]"}]}], ";", "\[IndentingNewLine]", 
+       RowBox[{"Do", "[", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"data", "[", 
+              RowBox[{"[", 
+               RowBox[{"i", ",", " ", "3"}], "]"}], "]"}], " ", "\[Equal]", 
+             " ", "value"}], ",", " ", 
+            RowBox[{
+             RowBox[{"tp", " ", "=", " ", 
+              RowBox[{"data", "[", 
+               RowBox[{"[", 
+                RowBox[{"i", ",", "1"}], "]"}], "]"}]}], ";", " ", 
+             RowBox[{"shift", " ", "=", " ", 
+              RowBox[{"data", "[", 
+               RowBox[{"[", 
+                RowBox[{"i", ",", "2"}], "]"}], "]"}]}], ";"}]}], "]"}], 
+          ";"}], "\[IndentingNewLine]", ",", 
+         RowBox[{"{", 
+          RowBox[{"i", ",", " ", 
+           RowBox[{"Length", "[", "data", "]"}]}], "}"}]}], "]"}], ";", 
+       "\[IndentingNewLine]", " ", 
+       RowBox[{"ParametricPlot3D", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"tp", ",", " ", "shift", ",", " ", "t"}], "}"}], ",", " ", 
+         RowBox[{"{", 
+          RowBox[{"t", ",", 
+           RowBox[{"minimum", " ", "-", " ", "delta"}], ",", " ", 
+           RowBox[{"maximum", " ", "+", " ", "delta"}]}], "}"}], ",", " ", 
+         RowBox[{"PlotStyle", "\[Rule]", " ", "Red"}]}], "]"}]}]}], 
+     "\[IndentingNewLine]", "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gFirstMaximum", " ", "=", " ", 
+   RowBox[{"MaximumGraph", "[", 
+    RowBox[{"first", ",", " ", "minimum", ",", "maximum"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gSeconMaximum", " ", "=", " ", 
+   RowBox[{"MaximumGraph", "[", 
+    RowBox[{"second", ",", " ", "minimum", ",", " ", "maximum"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"Show", "[", 
+    RowBox[{"gFirst", ",", " ", "gFirstMaximum", ",", " ", 
+     RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"Show", "[", 
+    RowBox[{"gSecond", ",", "gSeconMaximum", ",", " ", 
+     RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"Show", "[", 
+    RowBox[{
+    "gFirst", ",", " ", "gSecond", ",", " ", "gFirstMaximum", ",", " ", 
+     "gSeconMaximum", ",", " ", 
+     RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.506673116368885*^9, 3.5066731788880816`*^9}, {
+  3.506673341530078*^9, 3.5066733492765894`*^9}, {3.506674063294463*^9, 
+  3.506674573027215*^9}, {3.5066746955447598`*^9, 3.5066748090411744`*^9}, {
+  3.5066750506340027`*^9, 3.506675054104303*^9}, {3.5067467311064377`*^9, 
+  3.5067467731880836`*^9}, {3.5067468085739155`*^9, 3.506746923441573*^9}, {
+  3.5067471170949764`*^9, 3.506747255458454*^9}, {3.506747308669733*^9, 
+  3.5067478527999673`*^9}, {3.5067480685003967`*^9, 3.506748068652715*^9}, {
+  3.506755492546522*^9, 3.5067555094340277`*^9}, {3.5154861030146484`*^9, 
+  3.5154861056240234`*^9}}]
+},
+WindowSize->{1524, 886},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"8.0 for Microsoft Windows (64-bit) (November 7, 2010)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 6995, 182, 612, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

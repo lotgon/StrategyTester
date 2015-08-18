@@ -1,0 +1,16 @@
+﻿<Window x:Class="GUIAnalyser.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="300" Width="300">
+    <Grid>
+        <StackPanel>
+            <Button Name="ButtonQuotes" Margin="5" Click="ButtonQuotes_Click">Quotes</Button>
+            <Button Name="ButtonPreAnalyzingStrategy" Margin="5" Click="ButtonPreAnalyzingStrategy_Click">PreAnalyzing Strategy</Button>
+            <Button Name="ButtonBuildMarginEquity" Margin="5" Click="ButtonBuildMarginEquity_Click">Build Margin Equity</Button>
+            <Button Name="ButtonAnalyseTradeResult" Margin="5" Click="ButtonMarginEquityAnalyzer_Click">Margin Equity Analyzer</Button>
+            <Button Name="ButtonCalculatePortfolio" Margin="5" Click="ButtonCalculatePortfolio_Click">Calculate Portfolio</Button>
+            <Button Name="ButtonTools" Margin="5" Click="ButtonTools_Click">Tools</Button>
+        </StackPanel>
+        
+    </Grid>
+</Window>

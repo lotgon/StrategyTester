@@ -1,0 +1,60 @@
+Clear[i, l, m, x, y, l, t, a, temp, result];
+p = $profit;
+margin = $margin;
+marginThreshold = $marginThreshold;
+reliability = $reliability;
+covariance = $covariance;
+loss = $loss;
+balance = $balance;
+
+y = y /. FindRoot[1 + Erf[y/Sqrt[2]] == 2 reliability, {y, 0}];
+
+b = margin / marginThreshold;
+covariance = covariance y y / (4 loss);
+
+m = Dimensions[balance][[1]];
+
+covarianceInverse = Inverse[covariance];
+Sigma = Table[Dot[balance[[i]], covarianceInverse, balance[[j]]], {i, m}, {j, m}];
+
+pk = Table[Dot[p, covarianceInverse, balance[[i]]], {i, m}];
+bk = Table[Dot[b, covarianceInverse, balance[[i]]], {i, m}];
+
+
+SigmaInverse = Inverse[Sigma];
+xp = Dot[SigmaInverse, pk];
+xb = Dot[SigmaInverse, bk];
+
+
+p2 = Sum[xp[[i]] Dot[covarianceInverse, balance[[i]]], {i, m}] - Dot[covarianceInverse, p];
+b2 = Sum[xb[[i]] Dot[covarianceInverse, balance[[i]]], {i, m}] - Dot[covarianceInverse, b];
+
+a = l p2 + t b2;
+
+
+system = {Simplify[ Dot[b, a]] == 1, Simplify[Dot[a, p] - Dot[a, covariance, a]] == 0};
+solution = NSolve[system, {l, t}];
+
+profit = 0;
+
+Do[
+	l = l /.solution[[index]];
+	t = t /.solution[[index]];
+	If[Im[m] != 0 || Im[l] != 0, Continue[];];
+	a = l p2 + t b2;
+	temp = Dot[a, p];
+	If[temp < profit, Continue[];];
+	result = a;
+	profit = temp;
+,{index, Length[solution]}];
+
+
+If[0 == profit, result = Table[0, {i, Length[p]}];];
+profit = Dot[result, p];
+
+Print["profit = ", profit];
+Print["result = ", result];
+Print["when = ", 4 loss result. covariance .result/(2 profit)^2];
+
+
+

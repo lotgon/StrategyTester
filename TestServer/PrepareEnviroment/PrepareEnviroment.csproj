@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{25BEA0C8-05BB-4CC0-A780-42CD0ED5E757}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PrepareEnviroment</RootNamespace>
+    <AssemblyName>PrepareEnviroment</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>http://localhost/PrepareEnviroment/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AllStrategies\BuyAndWait\BuyAndWait.csproj">
+      <Project>{3A80A361-0F0D-4EF0-A9DF-3F4F13C5AF71}</Project>
+      <Name>BuyAndWait</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AllStrategies\BuyLimitAndWait\BuyLimitAndWait.csproj">
+      <Project>{334A7228-D764-4C7A-BCDC-BDD3F8C0AF2D}</Project>
+      <Name>BuyLimitAndWait</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AllStrategies\InverseMartinGale\InverseMartinGale.csproj">
+      <Project>{438650AB-72ED-4617-91E9-2964351A1C50}</Project>
+      <Name>InverseMartinGale</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AllStrategies\Pipsovik\Pipsovik.csproj">
+      <Project>{F9C80E29-6B7A-44BC-9F8F-82B9AE15987D}</Project>
+      <Name>Pipsovik</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AllStrategies\SuperAdaptStrategy\SuperAdaptStrategy.csproj">
+      <Project>{2C4C2C8C-CF13-439F-B056-C2B05E8C21DD}</Project>
+      <Name>SuperAdaptStrategy</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{0D12E7C1-08EC-48A0-8645-748906F67F32}</Project>
+      <Name>Common</Name>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{631AC093-430F-45F4-BA0C-AF0F0405918A}</Project>
+      <Name>Core</Name>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\MartinGale\MartinGale.csproj">
+      <Project>{AA7FF419-EEAF-408B-910C-73E3BCCCD0AF}</Project>
+      <Name>MartinGale</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mathematics\Mathematics.csproj">
+      <Project>{CE36C987-82B3-48D3-9DAA-4CF9F047FB6E}</Project>
+      <Name>Mathematics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MetaHosts\MetaClientWrapper\MetaClientWrapper.vcxproj">
+      <Project>{88C34C71-8C1E-4B82-A0B2-1843F10A831F}</Project>
+      <Name>MetaClientWrapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SuperStrategy\SuperStrategy.csproj">
+      <Project>{92AF6023-CCFF-47CE-8F92-DC9952D9E0DD}</Project>
+      <Name>SuperStrategy</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="gacutil.exe" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="mqlcache.dat" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>$(ProjectDir)gacutil.exe /u Common
+$(ProjectDir)gacutil.exe /u AForge
+$(ProjectDir)gacutil.exe /u FxAdvisorHost
+$(ProjectDir)gacutil.exe /u FxAdvisorCore
+
+
+mkdir $(SolutionDir)exportMetaStrategies
+del $(SolutionDir)exportMetaStrategies\*.* /Q
+del $(SolutionDir)exportMetaStrategies\experts\libraries\*.* /Q
+
+xcopy /y $(TargetDir)*.* "$(SolutionDir)exportMetaStrategies\"
+rmdir "$(SolutionDir)exportMetaStrategies\experts" /S /Q
+mkdir "$(SolutionDir)exportMetaStrategies\experts\libraries"
+copy /y $(TargetDir)MetaClientWrapper.dll "$(SolutionDir)exportMetaStrategies\experts\libraries\"
+copy /y "c:\MetaTrader - FXOpen\experts\libraries\DotNetBridgeLib.ex4" "$(SolutionDir)exportMetaStrategies\experts\libraries\"
+del $(SolutionDir)exportMetaStrategies\*.pdb /Q
+del $(SolutionDir)exportMetaStrategies\*.config /Q
+
+echo copy all
+xcopy /y $(SolutionDir)exportMetaStrategies\*.* "c:\MetaTrader - FXOpen\" /t /e</PostBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+</Project>

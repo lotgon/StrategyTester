@@ -1,0 +1,32 @@
+Clear[l, m, x, y];
+p = $profit;
+margin = $margin;
+marginThreshold = $marginThreshold;
+reliability = $reliability;
+covariance = $covariance;
+loss = $loss;
+balance = $balance;
+
+y = y /. FindRoot[1 + Erf[y/Sqrt[2]] == 2 reliability, {y, 0}];
+profit = 0;
+b = margin / marginThreshold;
+covariance = covariance y y / (4 loss);
+
+m = Dimensions[balance][[1]] - 1;
+
+covarianceInverse = Inverse[covariance];
+Sigma = Table[Dot[k[[i]], covarianceInverse, k[[j]]], {i, m}, {j, m}];
+
+pk = Table[Dot[p, covarianceInverse, k[[i]]], {i, m}];
+bk = Table[Dot[b, covarianceInverse, k[[i]]], {i, m}];
+
+
+SigmaInverse = Inverse[Sigma];
+xp = Dot[SigmaInverse, pk];
+xb = Dot[SigmaInverse, bk];
+
+
+p2 = Sum[xp[[i]] Dot[SigmaInverse, k[[i]]], {i, m}] - Dot[SigmaInverse, p];
+b2 = Sum[xb[[i]] Dot[SigmaInverse, k[[i]]], {i, m}] - Dot[SigmaInverse, b];
+
+a = \[Lambda] p2 + \[Mu] \[Beta]2;

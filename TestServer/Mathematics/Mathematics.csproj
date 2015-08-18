@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CE36C987-82B3-48D3-9DAA-4CF9F047FB6E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Mathematics</RootNamespace>
+    <AssemblyName>Mathematics</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>fx.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PowerCollections">
+      <HintPath>..\..\library\PowerCollections.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Wolfram.NETLink, Version=1.5.3231.35548, Culture=neutral, PublicKeyToken=20f3cbf2d805e0a0, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\library\Wolfram.NETLink.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Algorithms.cs" />
+    <Compile Include="Classifications\BayesGaussClassifier.cs" />
+    <Compile Include="Classifications\MinMaxClassifier.cs" />
+    <Compile Include="Containers\Bar.cs" />
+    <Compile Include="Containers\BarEx.cs" />
+    <Compile Include="Containers\DiscreteIntervals.cs" />
+    <Compile Include="Containers\DiscreteInterval.cs" />
+    <Compile Include="Containers\TicksFactory.cs" />
+    <Compile Include="DateTimeParser.cs" />
+    <Compile Include="Features\IFeature.cs" />
+    <Compile Include="Features\Trend3.cs" />
+    <Compile Include="IMathProvider.cs" />
+    <Compile Include="Interval.cs" />
+    <Compile Include="LinearAlgebra\Matrix.cs" />
+    <Compile Include="LinearAlgebra\Vector.cs" />
+    <Compile Include="MathArgs.cs" />
+    <Compile Include="MathCache.cs" />
+    <Compile Include="MathFormatProvider.cs" />
+    <Compile Include="Mathematica\Scripts.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Scripts.resx</DependentUpon>
+    </Compile>
+    <Compile Include="MathematicaKernel.cs" />
+    <Compile Include="MathResult.cs" />
+    <Compile Include="Morphology.cs" />
+    <Compile Include="NumericalMethods.cs" />
+    <Compile Include="Output\MathArray1D.cs" />
+    <Compile Include="Output\MathArray2D.cs" />
+    <Compile Include="Output\MathComment.cs" />
+    <Compile Include="Output\MathData.cs" />
+    <Compile Include="Output\MathFile.cs" />
+    <Compile Include="Output\MathList2D.cs" />
+    <Compile Include="Output\MathList3D.cs" />
+    <Compile Include="Output\MathValue.cs" />
+    <Compile Include="Pixel2.cs" />
+    <Compile Include="Point3D.cs" />
+    <Compile Include="Portfolio.cs" />
+    <Compile Include="PortfolioInput.cs" />
+    <Compile Include="Predicates.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Quote.cs" />
+    <Compile Include="Stability.cs" />
+    <Compile Include="Statistics.cs" />
+    <Compile Include="Containers\Ticks.cs" />
+    <Compile Include="SyntheticSecurity.cs" />
+    <Compile Include="Time.cs" />
+    <Compile Include="Variable.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mathematica\Scripts.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Scripts.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="fx.snk" />
+    <None Include="Mathematica\Clear.nb" />
+    <None Include="Mathematica\ConfidenceInterval.nb" />
+    <None Include="Mathematica\Portfolio.nb" />
+    <None Include="Mathematica\PortfolioMarginBalance.nb" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Mathematica\PortfolioDiscrete.nb" />
+    <None Include="Mathematica\PortfolioMargin.nb" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Log4Smart\Log4Smart.csproj">
+      <Project>{19014FBC-1C8C-4391-8BDC-938328BEE567}</Project>
+      <Name>Log4Smart</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="MathProviders\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

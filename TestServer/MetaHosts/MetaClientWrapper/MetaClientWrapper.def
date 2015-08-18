@@ -1,0 +1,17 @@
+LIBRARY	"MetaClientWrapper"
+
+EXPORTS
+    ; Explicit exports can go here
+	FxAdvisor_Connect				@1
+	FxAdvisor_OnTick				@2
+	FxAdvisor_GetCommand			@3
+	FxAdvisor_SetCmdResultD			@4
+	FxAdvisor_SetCmdResultI			@5
+	FxAdvisor_SetCmdResultS			@6
+	FxAdvisor_GetIntCmdParam		@7
+	FxAdvisor_GetStrCmdParam		@8
+	FxAdvisor_SetParameter			@9
+	FxAdvisor_GetDoubleCmdParam		@10
+	FxAdvisor_GetCommandParamCount	@11
+	FxAdvisor_SetCmdResultB			@12
+	FxAdvisor_Init					@13

@@ -1,0 +1,2 @@
+solution = StudentTCI[0, 1, $freedom, ConfidenceLevel -> $level];
+Print["deviation = ", solution[[2]]];

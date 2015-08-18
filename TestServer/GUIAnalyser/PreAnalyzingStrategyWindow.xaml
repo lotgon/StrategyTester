@@ -1,0 +1,75 @@
+﻿<Window x:Class="GUIAnalyser.PreAnalyzingStrategyWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:sChooser="clr-namespace:GUIAnalyser"
+        xmlns:sLogger="clr-namespace:GUIAnalyser"
+        Title="MainWindow" Height="Auto" Width="525" Name="This" Loaded="This_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        
+        <TabControl Name="tabControl1" Height="Auto" >
+                <TabItem Header="ExtractOpenPoints" Name="TabExtractOpenPoints">
+                    <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <sChooser:SymbolChooser x:Name="symbolChooser" Width="Auto"/>
+                    <!--<Grid Grid.Row="0" Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                    </Grid> -->
+                    <StackPanel Grid.Row="0" Grid.Column="1">
+                        <GroupBox Header="Analyse">
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="3">
+                                    <TextBlock VerticalAlignment="Center">From:</TextBlock>
+                                    <DatePicker Name="DatePickerFrom" />
+                                    <TextBlock VerticalAlignment="Center">To:</TextBlock>
+                                    <DatePicker Name="DatePickerTo" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="3">
+                                    <CheckBox Name="CheckBoxStrategyPointAnalyse" IsChecked="True">Strategy Points</CheckBox>
+                                    <CheckBox Name="CheckBoxAllPointAnalyse">All Points</CheckBox>
+                                </StackPanel>
+                                <TextBox x:Name="TextBoxWorkingPercentTime" Margin="5">100</TextBox>
+                                <Button Name="ButtonAnalyseStrategy" Margin="3" Width="Auto" HorizontalAlignment="Left" VerticalAlignment="Top" Click="ButtonAnalyse_Click">Analyse</Button>
+                            </StackPanel>
+                        </GroupBox>
+                        <GroupBox Header="Comparison">
+                            <StackPanel>
+                                <DockPanel LastChildFill="True">
+                                    <Button Name="ButtonComp1"  Width="70" DockPanel.Dock="Right" Margin="3" Click="ButtonComp1_Click">Browse</Button>
+                                    <TextBox Name="TextBoxComparison1" Margin="3"/>
+                                </DockPanel>
+                                <DockPanel LastChildFill="True">
+                                    <Button Name="ButtonComp2" Width="70" DockPanel.Dock="Right" Margin="3" Click="ButtonComp2_Click">Browse</Button>
+                                    <TextBox Name="TextBoxComparison2" Margin="3"/>
+                                </DockPanel>
+                                
+                                <StackPanel Margin="5"  Orientation="Horizontal" FlowDirection="RightToLeft">
+                                    <Button Name="ButtonCompare"  Margin="5" Click="ButtonCompare_Click">Compare</Button>
+                                    <TextBlock VerticalAlignment="Center">Compare two results</TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                        </GroupBox>
+                        <Button Name="ButtonTestStrategy" Margin="3" Width="Auto" HorizontalAlignment="Left" VerticalAlignment="Top" Click="ButtonTestStrategy_Click">Test Strategy</Button>
+                        <Button Name="ButtonCalculateTimeForPips" Margin="3" Width="Auto" HorizontalAlignment="Left" VerticalAlignment="Top" Click="ButtonCalculateTimeForPips_Click">Calculate Time For Pips</Button>
+                    </StackPanel>
+                </Grid>
+                </TabItem>
+            </TabControl>
+        <sLogger:Logger x:Name="LoggerMessage" Grid.Row="1"/>
+
+    </Grid>
+</Window>

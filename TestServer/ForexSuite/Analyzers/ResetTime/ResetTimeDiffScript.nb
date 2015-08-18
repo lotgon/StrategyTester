@@ -1,0 +1,530 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     20326,        521]
+NotebookOptionsPosition[     20081,        508]
+NotebookOutlinePosition[     20424,        523]
+CellTagsIndexPosition[     20381,        520]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"first", " ", "=", " ", "\"\<Strategy\>\""}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"second", " ", "=", " ", "\"\<Random\>\""}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"firstColor", "=", " ", 
+     RowBox[{"RGBColor", "[", 
+      RowBox[{"1", ",", " ", "0", ",", "0"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"secondColor", " ", "=", " ", 
+     RowBox[{"RGBColor", "[", 
+      RowBox[{"0", ",", " ", "1", ",", " ", "0"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"first", " ", "data", " ", "directory"}], " ", "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"takeProfitData", "=", 
+     RowBox[{
+      RowBox[{"Import", "[", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{
+         RowBox[{"NotebookDirectory", "[", "]"}], ",", " ", "first", ",", 
+         " ", "\"\<\\\\take profit.dat\>\""}], "]"}], "]"}], "[", 
+      RowBox[{"[", "1", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"averageTimeData", " ", "=", " ", 
+     RowBox[{
+      RowBox[{"Import", "[", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{
+         RowBox[{"NotebookDirectory", "[", "]"}], ",", " ", "first", ",", 
+         " ", "\"\<\\\\average time.dat\>\""}], "]"}], "]"}], "[", 
+      RowBox[{"[", "1", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"sigmaTimeData", " ", "=", " ", 
+     RowBox[{
+      RowBox[{"Import", "[", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{
+         RowBox[{"NotebookDirectory", "[", "]"}], ",", " ", "first", ",", 
+         " ", "\"\<\\\\sigma time.dat\>\""}], "]"}], "]"}], "[", 
+      RowBox[{"[", "1", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"averageLossData", " ", "=", "  ", 
+     RowBox[{
+      RowBox[{"Import", "[", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{
+         RowBox[{"NotebookDirectory", "[", "]"}], ",", " ", "first", ",", 
+         " ", "\"\<\\\\average loss.dat\>\""}], "]"}], "]"}], "[", 
+      RowBox[{"[", "1", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"sigmaLossData", " ", "=", "  ", 
+     RowBox[{
+      RowBox[{"Import", "[", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{
+         RowBox[{"NotebookDirectory", "[", "]"}], ",", " ", "first", ",", 
+         " ", "\"\<\\\\sigma loss.dat\>\""}], "]"}], "]"}], "[", 
+      RowBox[{"[", "1", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"resettingPercentageData", " ", "=", " ", 
+     RowBox[{
+      RowBox[{"Import", "[", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{
+         RowBox[{"NotebookDirectory", "[", "]"}], ",", " ", "first", ",", 
+         " ", "\"\<\\\\resetting percentage.dat\>\""}], "]"}], "]"}], "[", 
+      RowBox[{"[", "1", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"n", " ", "=", " ", 
+     RowBox[{"Length", "[", "takeProfitData", "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"averageTime", " ", "=", " ", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"takeProfitData", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], ",", " ", 
+         RowBox[{"averageTimeData", "[", 
+          RowBox[{"[", "i", "]"}], "]"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", " ", "n"}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"sigmaTime", " ", "=", " ", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"takeProfitData", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], ",", " ", 
+         RowBox[{"sigmaTimeData", "[", 
+          RowBox[{"[", "i", "]"}], "]"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", " ", "n"}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"averageLoss", " ", "=", " ", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"takeProfitData", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], ",", " ", 
+         RowBox[{"averageLossData", "[", 
+          RowBox[{"[", "i", "]"}], "]"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", " ", "n"}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"sigmaLoss", " ", "=", " ", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"takeProfitData", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], ",", " ", 
+         RowBox[{"sigmaLossData", "[", 
+          RowBox[{"[", "i", "]"}], "]"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", " ", "n"}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"resettingPercentage", " ", "=", " ", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"takeProfitData", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], ",", " ", 
+         RowBox[{"resettingPercentageData", "[", 
+          RowBox[{"[", "i", "]"}], "]"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", " ", "n"}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"data", " ", "=", "  ", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"takeProfitData", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], ",", " ", 
+         RowBox[{
+          RowBox[{"averageTimeData", "[", 
+           RowBox[{"[", "i", "]"}], "]"}], "/", 
+          RowBox[{"takeProfitData", "[", 
+           RowBox[{"[", "i", "]"}], "]"}]}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", " ", "n"}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"gAverageTimeFirst", " ", "=", " ", 
+     RowBox[{"ListPlot", "[", 
+      RowBox[{"averageTime", ",", " ", 
+       RowBox[{"PlotStyle", "\[Rule]", "firstColor"}], ",", " ", 
+       RowBox[{"PlotJoined", "\[Rule]", "True"}], ",", 
+       RowBox[{"AxesLabel", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{
+         "\"\<TP\>\"", ",", "\"\<Average of reset time (in hours)\>\""}], 
+         "}"}]}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"gSigmaTimeFirst", " ", "=", " ", 
+     RowBox[{"ListPlot", "[", 
+      RowBox[{"sigmaTime", ",", 
+       RowBox[{"PlotStyle", "\[Rule]", "firstColor"}], ",", "  ", 
+       RowBox[{"PlotJoined", "\[Rule]", "True"}], ",", 
+       RowBox[{"AxesLabel", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{
+         "\"\<TP\>\"", ",", "\"\<Sigma of reset time (in hours)\>\""}], 
+         "}"}]}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"gAverageLossFirst", " ", "=", " ", 
+     RowBox[{"ListPlot", "[", 
+      RowBox[{"averageLoss", ",", " ", 
+       RowBox[{"PlotStyle", "\[Rule]", "firstColor"}], ",", " ", 
+       RowBox[{"PlotJoined", "\[Rule]", "True"}], ",", 
+       RowBox[{"AxesLabel", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"\"\<TP\>\"", ",", "\"\<Average loss (in pips)\>\""}], 
+         "}"}]}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"gSigmaLossFirst", " ", "=", " ", 
+     RowBox[{"ListPlot", "[", 
+      RowBox[{"sigmaLoss", ",", " ", 
+       RowBox[{"PlotStyle", "\[Rule]", "firstColor"}], ",", " ", 
+       RowBox[{"PlotJoined", "\[Rule]", "True"}], ",", 
+       RowBox[{"AxesLabel", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"\"\<TP\>\"", ",", "\"\<Sigma loss (in pips)\>\""}], 
+         "}"}]}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"gResettingPercentageFirst", " ", "=", " ", 
+     RowBox[{"ListPlot", "[", 
+      RowBox[{"resettingPercentage", ",", " ", 
+       RowBox[{"PlotStyle", "\[Rule]", "firstColor"}], ",", " ", 
+       RowBox[{"PlotJoined", "\[Rule]", "True"}], ",", 
+       RowBox[{"AxesLabel", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"\"\<TP\>\"", ",", "\"\<Resetting percentage\>\""}], 
+         "}"}]}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"gDataFirst", " ", "=", " ", 
+     RowBox[{"ListPlot", "[", 
+      RowBox[{"data", ",", " ", 
+       RowBox[{"PlotStyle", "\[Rule]", "firstColor"}], ",", " ", 
+       RowBox[{"PlotJoined", "\[Rule]", "True"}], ",", 
+       RowBox[{"AxesLabel", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"\"\<TP\>\"", ",", "\"\<Time of pip\>\""}], "}"}]}]}], 
+      "]"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{"second", " ", "data", " ", "directory"}], " ", "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"takeProfitData", "=", 
+     RowBox[{
+      RowBox[{"Import", "[", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{
+         RowBox[{"NotebookDirectory", "[", "]"}], ",", " ", "second", ",", 
+         " ", "\"\<\\\\take profit.dat\>\""}], "]"}], "]"}], "[", 
+      RowBox[{"[", "1", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"averageTimeData", " ", "=", " ", 
+     RowBox[{
+      RowBox[{"Import", "[", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{
+         RowBox[{"NotebookDirectory", "[", "]"}], ",", " ", "second", ",", 
+         " ", "\"\<\\\\average time.dat\>\""}], "]"}], "]"}], "[", 
+      RowBox[{"[", "1", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"sigmaTimeData", " ", "=", " ", 
+     RowBox[{
+      RowBox[{"Import", "[", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{
+         RowBox[{"NotebookDirectory", "[", "]"}], ",", " ", "second", ",", 
+         " ", "\"\<\\\\sigma time.dat\>\""}], "]"}], "]"}], "[", 
+      RowBox[{"[", "1", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"averageLossData", " ", "=", "  ", 
+     RowBox[{
+      RowBox[{"Import", "[", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{
+         RowBox[{"NotebookDirectory", "[", "]"}], ",", " ", "second", ",", 
+         " ", "\"\<\\\\average loss.dat\>\""}], "]"}], "]"}], "[", 
+      RowBox[{"[", "1", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"sigmaLossData", " ", "=", "  ", 
+     RowBox[{
+      RowBox[{"Import", "[", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{
+         RowBox[{"NotebookDirectory", "[", "]"}], ",", " ", "second", ",", 
+         " ", "\"\<\\\\sigma loss.dat\>\""}], "]"}], "]"}], "[", 
+      RowBox[{"[", "1", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"resettingPercentageData", " ", "=", " ", 
+     RowBox[{
+      RowBox[{"Import", "[", 
+       RowBox[{"StringJoin", "[", 
+        RowBox[{
+         RowBox[{"NotebookDirectory", "[", "]"}], ",", " ", "second", ",", 
+         " ", "\"\<\\\\resetting percentage.dat\>\""}], "]"}], "]"}], "[", 
+      RowBox[{"[", "1", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"n", " ", "=", " ", 
+     RowBox[{"Length", "[", "takeProfitData", "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"averageTime", " ", "=", " ", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"takeProfitData", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], ",", " ", 
+         RowBox[{"averageTimeData", "[", 
+          RowBox[{"[", "i", "]"}], "]"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", " ", "n"}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"sigmaTime", " ", "=", " ", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"takeProfitData", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], ",", " ", 
+         RowBox[{"sigmaTimeData", "[", 
+          RowBox[{"[", "i", "]"}], "]"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", " ", "n"}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"averageLoss", " ", "=", " ", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"takeProfitData", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], ",", " ", 
+         RowBox[{"averageLossData", "[", 
+          RowBox[{"[", "i", "]"}], "]"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", " ", "n"}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"sigmaLoss", " ", "=", " ", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"takeProfitData", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], ",", " ", 
+         RowBox[{"sigmaLossData", "[", 
+          RowBox[{"[", "i", "]"}], "]"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", " ", "n"}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"resettingPercentage", " ", "=", " ", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"takeProfitData", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], ",", " ", 
+         RowBox[{"resettingPercentageData", "[", 
+          RowBox[{"[", "i", "]"}], "]"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", " ", "n"}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"data", " ", "=", "  ", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"takeProfitData", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], ",", " ", 
+         RowBox[{
+          RowBox[{"averageTimeData", "[", 
+           RowBox[{"[", "i", "]"}], "]"}], "/", 
+          RowBox[{"takeProfitData", "[", 
+           RowBox[{"[", "i", "]"}], "]"}]}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", " ", "n"}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"gAverageTimeSecond", " ", "=", " ", 
+     RowBox[{"ListPlot", "[", 
+      RowBox[{"averageTime", ",", " ", 
+       RowBox[{"PlotStyle", "\[Rule]", "secondColor"}], ",", " ", 
+       RowBox[{"PlotJoined", "\[Rule]", "True"}], ",", 
+       RowBox[{"AxesLabel", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{
+         "\"\<TP\>\"", ",", "\"\<Average of reset time (in hours)\>\""}], 
+         "}"}]}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"gSigmaTimeSecond", " ", "=", " ", 
+     RowBox[{"ListPlot", "[", 
+      RowBox[{"sigmaTime", ",", " ", 
+       RowBox[{"PlotStyle", "\[Rule]", "secondColor"}], ",", " ", 
+       RowBox[{"PlotJoined", "\[Rule]", "True"}], ",", 
+       RowBox[{"AxesLabel", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{
+         "\"\<TP\>\"", ",", "\"\<Sigma of reset time (in hours)\>\""}], 
+         "}"}]}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"gAverageLossSecond", " ", "=", " ", 
+     RowBox[{"ListPlot", "[", 
+      RowBox[{"averageLoss", ",", " ", 
+       RowBox[{"PlotStyle", "\[Rule]", "secondColor"}], ",", " ", 
+       RowBox[{"PlotJoined", "\[Rule]", "True"}], ",", 
+       RowBox[{"AxesLabel", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"\"\<TP\>\"", ",", "\"\<Average loss (in pips)\>\""}], 
+         "}"}]}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"gSigmaLossSecond", " ", "=", " ", 
+     RowBox[{"ListPlot", "[", 
+      RowBox[{"sigmaLoss", ",", " ", 
+       RowBox[{"PlotStyle", "\[Rule]", "secondColor"}], ",", " ", 
+       RowBox[{"PlotJoined", "\[Rule]", "True"}], ",", 
+       RowBox[{"AxesLabel", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"\"\<TP\>\"", ",", "\"\<Sigma loss (in pips)\>\""}], 
+         "}"}]}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"gResettingPercentageSecond", " ", "=", " ", 
+     RowBox[{"ListPlot", "[", 
+      RowBox[{"resettingPercentage", ",", " ", 
+       RowBox[{"PlotStyle", "\[Rule]", "secondColor"}], ",", " ", 
+       RowBox[{"PlotJoined", "\[Rule]", "True"}], ",", 
+       RowBox[{"AxesLabel", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"\"\<TP\>\"", ",", "\"\<Resetting percentage\>\""}], 
+         "}"}]}]}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"gDataSecond", " ", "=", " ", 
+     RowBox[{"ListPlot", "[", 
+      RowBox[{"data", ",", " ", 
+       RowBox[{"PlotStyle", "\[Rule]", "secondColor"}], ",", " ", 
+       RowBox[{"PlotJoined", "\[Rule]", "True"}], ",", 
+       RowBox[{"AxesLabel", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"\"\<TP\>\"", ",", "\"\<Time of pip\>\""}], "}"}]}]}], 
+      "]"}]}], ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"Show", "[", 
+      RowBox[{"gAverageTimeFirst", ",", " ", "gAverageTimeSecond", ",", " ", 
+       RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"Show", "[", 
+      RowBox[{"gSigmaTimeFirst", ",", " ", "gSigmaTimeSecond", ",", 
+       RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"Show", "[", 
+      RowBox[{"gAverageLossFirst", ",", " ", "gAverageLossSecond", ",", 
+       RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"Show", "[", 
+      RowBox[{"gSigmaLossFirst", ",", "gSigmaLossSecond", ",", " ", 
+       RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"Show", "[", 
+      RowBox[{
+      "gResettingPercentageFirst", ",", "gResettingPercentageSecond", ",", 
+       " ", 
+       RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}], "]"}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Print", "[", 
+     RowBox[{"Show", "[", 
+      RowBox[{"gDataFirst", ",", " ", "gDataSecond", ",", " ", 
+       RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}], "]"}], 
+    ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.5117460963847656`*^9, 3.5117462331054688`*^9}, {
+   3.5117463229521484`*^9, 3.511746349932617*^9}, {3.511748757756836*^9, 
+   3.5117489161035156`*^9}, {3.511749036196289*^9, 3.5117491048652344`*^9}, {
+   3.511749137569336*^9, 3.511749171370117*^9}, {3.511749284044922*^9, 
+   3.5117493047617188`*^9}, 3.5117497603408203`*^9, {3.511749814626953*^9, 
+   3.511749825166992*^9}, {3.5117500093085938`*^9, 3.5117500098359375`*^9}, {
+   3.512753785461445*^9, 3.5127538377184343`*^9}, {3.512783037866211*^9, 
+   3.5127831549335938`*^9}, {3.512783194673828*^9, 3.5127832057089844`*^9}, {
+   3.512783397473633*^9, 3.5127835346210938`*^9}, {3.5127835988632812`*^9, 
+   3.5127836210615234`*^9}, {3.512783662107422*^9, 3.5127839126679688`*^9}, {
+   3.5127839430908203`*^9, 3.5127839544628906`*^9}, {3.5127840273808594`*^9, 
+   3.512784034790039*^9}, 3.512784120723633*^9, {3.512784157341797*^9, 
+   3.5127842805664062`*^9}, {3.5127843892998047`*^9, 
+   3.5127845358066406`*^9}, {3.5127846018583984`*^9, 3.512784608057617*^9}, {
+   3.512784678265625*^9, 3.512784726591797*^9}, {3.5127847655234375`*^9, 
+   3.512784770423828*^9}, {3.512784824022461*^9, 3.512784883915039*^9}, {
+   3.512784932041992*^9, 3.512784979680664*^9}, {3.5127852399335938`*^9, 
+   3.5127852626171875`*^9}, {3.5127993549296875`*^9, 3.512799371546875*^9}}]
+},
+WindowSize->{1427, 839},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"8.0 for Microsoft Windows (64-bit) (November 7, 2010)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 19520, 486, 1232, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

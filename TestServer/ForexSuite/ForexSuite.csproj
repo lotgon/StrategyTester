@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5C1F3C97-E09D-48F2-AF4D-631359D767DB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ForexSuite</RootNamespace>
+    <AssemblyName>ForexSuite</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>fx.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FirebirdSql.Data.FirebirdClient, Version=2.6.0.0, Culture=neutral, PublicKeyToken=3750abcc3150b00c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\library\FirebirdSql.Data.FirebirdClient.dll</HintPath>
+    </Reference>
+    <Reference Include="PowerCollections">
+      <HintPath>..\..\library\PowerCollections.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Analyzers\Graph3D\Graph3DAnalyzer.cs" />
+    <Compile Include="Analyzers\Graph3D\Graph3DScript.cs" />
+    <Compile Include="Analyzers\ResetTime\ResetTime2Script.cs" />
+    <Compile Include="Analyzers\ResetTime\ResetTimeAnalyzer.cs" />
+    <Compile Include="Analyzers\MathematicaScript.cs" />
+    <Compile Include="Analyzers\ResetTime\ResetTimeScript.cs" />
+    <Compile Include="Analyzers\Scripts.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Scripts.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Setup\Config.cs" />
+    <Compile Include="Setup\Settings.cs" />
+    <Compile Include="Analyzers\Portfolio\PortfolioScript.cs" />
+    <Compile Include="QuotesManager.cs" />
+    <Compile Include="Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SymbolsManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Analyzers\Scripts.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Scripts.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Mathematics\Mathematics.csproj">
+      <Project>{CE36C987-82B3-48D3-9DAA-4CF9F047FB6E}</Project>
+      <Name>Mathematics</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Analyzers\Graph3D\Graph3DScript.nb" />
+    <None Include="Analyzers\ResetTime\ResetTime2Script.nb" />
+    <None Include="Analyzers\ResetTime\ResetTimeDiffScript.nb" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Files\AUDJPY.txt" />
+    <None Include="fx.snk" />
+    <None Include="Analyzers\Portfolio\PortfolioScript.nb" />
+    <None Include="Analyzers\ResetTime\ResetTimeScript.nb" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Files\AUDNZD.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Files\AUDUSD.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Files\CADJPY.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Files\CHFJPY.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Files\EURAUD.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Files\EURCAD.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Files\EURCHF.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Files\EURGBP.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Files\EURJPY.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Files\EURNOK.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Files\EURSEK.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Files\EURUSD.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Files\GBPCHF.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Files\GBPJPY.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Files\GBPUSD.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Files\NZDUSD.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Files\USDCAD.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Files\USDCHF.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Files\USDJPY.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Files\USDNOK.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Files\USDSEK.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,19 @@
+profit = $profit;
+reliability = $reliability;
+covariance = $covariance;
+loss = $loss;
+y = y /. FindRoot[1 + Erf[y/Sqrt[2]] == 2 reliability, {y, 0}];
+n = Length[profit];
+
+
+result = LinearSolve[y^2 covariance, 4 loss profit];
+profit = N[Dot[profit, result]];
+
+Print["profit = ", profit];
+
+
+Print["result = ", result];
+
+Print["when = ", y^2 result. covariance .result/(2 profit)^2];
+
+

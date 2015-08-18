@@ -1,0 +1,46 @@
+profit = $profit;
+
+reliability = $reliability;
+
+covariance = $covariance;
+
+coefficient =$coefficient;
+
+loss = $loss;
+
+y = y /. FindRoot[1 + Erf[y/Sqrt[2]] == 2 reliability, {y, 0}];
+
+n = Length[profit];
+
+k = Sum[Subscript[x, i] profit[[i]], {i, n}];
+
+sigma = Sum[y y Subscript[x, i] Subscript[x, j] covariance[[i, j]], {i, n}, {j, n}];
+
+system = {k, sigma <= 4 loss k};
+
+Do[system = Append[system,0 == Subscript[x, i] || Abs[Subscript[x, i]]>=$coefficient];,{i,n}];
+
+solution = NMaximize[system, Table[{Subscript[x, i], $coefficient, 1 + $coefficient}, {i, n}]];
+
+
+
+profit = N[solution[[1]]];
+
+Print["profit = ", profit];
+
+
+
+solution = solution[[2]];
+
+result = Table[Subscript[x, i] /. solution, {i, n}];
+
+Print["result = ", result];
+
+
+
+Print["when = ", y^2 result. covariance .result/(2 profit)^2];
+
+
+
+
+

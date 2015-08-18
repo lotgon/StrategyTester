@@ -1,0 +1,54 @@
+Clear[l, m, x, y];
+p = $profit;
+margin = $margin;
+threshold = $threshold;
+reliability = $reliability;
+covariance = $covariance;
+loss = $loss;
+
+y = y /. FindRoot[1 + Erf[y/Sqrt[2]] == 2 reliability, {y, 0}];
+profit = 0;
+a = margin / threshold;
+covariance = covariance y y / (4 loss);
+
+ai = LinearSolve[covariance, a];
+pi = LinearSolve[covariance, p];
+
+system = {l Dot[a, pi] + m Dot[a, ai] == 1, l Dot[p, pi] + m Dot[a, pi] == m/(1 - l)};
+
+solution = NSolve[system, {l,m}];
+
+Do[
+	l = l /.solution[[index]];
+	m = m /.solution[[index]];
+	If[Im[m] != 0 || Im[l] != 0, Continue[];];
+	x = l pi + m ai;
+	temp = Dot[x, p];
+	If[temp < profit, Continue[];];
+	result = x;
+	profit = temp;
+,{index, Length[solution]}];
+
+
+If[0 == profit,
+	result = pi;
+	profit = Dot[result, p];
+];
+Print["profit = ", profit];
+Print["result = ", result];
+Print["when = ", 4 loss result. covariance .result/(2 profit)^2];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

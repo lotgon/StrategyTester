@@ -1,0 +1,30 @@
+﻿#property copyright "mtg"
+#property link      ""
+
+#import "DotNetBridgeLib.ex4"
+   int bridge_connect(string remoteAdvisorUri, string parameters);
+   void bridge_setParameter( string key, string value);
+   int bridge_init( );
+   int bridge_deinit();
+   int bridge_start();
+   
+extern string    AdvisorName = "%%ADVISOR_NAME%%.dll";
+%%DECLARATION_VARIABLE%%
+
+int init()
+{
+   string param = "MagicNumber=%%MAGIC_NUMBER%%";
+   bridge_connect(TerminalPath() + "\\" + AdvisorName, param);
+   
+   %%INITIALIZATION_PARAM%%
+      
+   bridge_init();
+}
+int deinit()
+{
+   return (bridge_deinit());
+}
+int start()
+{
+   return (bridge_start());
+}

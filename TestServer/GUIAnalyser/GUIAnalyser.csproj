@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5ECED2A5-D51B-45CD-B408-A641A6E22C77}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GUIAnalyser</RootNamespace>
+    <AssemblyName>GUIAnalyser</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>fx.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FXOpenExtendedApi.Native.Net">
+      <HintPath>..\..\library\FDK\FXOpenExtendedApi.Native.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="FXOpenExtendedApi.Net, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\library\FDK\FXOpenExtendedApi.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="BuildMarginEquityWindow.xaml.cs">
+      <DependentUpon>BuildMarginEquityWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CalculatePortfolioWindow.xaml.cs">
+      <DependentUpon>CalculatePortfolioWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="QuotesWindow.xaml.cs">
+      <DependentUpon>QuotesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StartupParameters.cs" />
+    <Compile Include="ToolsWindow.xaml.cs">
+      <DependentUpon>ToolsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\DataFeedHistory.cs" />
+    <Compile Include="UserControls\Logger.xaml.cs">
+      <DependentUpon>Logger.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MarginEquityAnalyzerWindow.xaml.cs">
+      <DependentUpon>MarginEquityAnalyzerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Settings1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings1.settings</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\SymbolChooser.xaml.cs">
+      <DependentUpon>SymbolChooser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\MarginEquityAnalyzerViewModel.cs" />
+    <Compile Include="ViewModel\PortfolioCalculationViewModel.cs" />
+    <Compile Include="ViewModel\Portfolio\PortfolioRawData.cs" />
+    <Compile Include="ViewModel\Portfolio\PortfolioRawItem.cs" />
+    <Compile Include="ViewModel\Portfolio\TpShiftAdapter.cs" />
+    <Compile Include="ViewModel\ResetTimeViewModel.cs" />
+    <Compile Include="ViewModel\TestManagerViewModel.cs" />
+    <Page Include="BuildMarginEquityWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="QuotesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ToolsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Logger.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PreAnalyzingStrategyWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PreAnalyzingStrategyWindow.xaml.cs">
+      <DependentUpon>PreAnalyzingStrategyWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="CalculatePortfolioWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MarginEquityAnalyzerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\SymbolChooser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="fx.snk" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="Settings1.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AllStrategies\BuyLimitAndWait\BuyLimitAndWait.csproj">
+      <Project>{334A7228-D764-4C7A-BCDC-BDD3F8C0AF2D}</Project>
+      <Name>BuyLimitAndWait</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AllStrategies\Pipsovik\Pipsovik.csproj">
+      <Project>{F9C80E29-6B7A-44BC-9F8F-82B9AE15987D}</Project>
+      <Name>Pipsovik</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AllStrategies\SuperAdaptStrategy\SuperAdaptStrategy.csproj">
+      <Project>{2C4C2C8C-CF13-439F-B056-C2B05E8C21DD}</Project>
+      <Name>SuperAdaptStrategy</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Analysis\Analysis.csproj">
+      <Project>{96D85696-B860-4D22-847A-66BD43DBF7B4}</Project>
+      <Name>Analysis</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{0D12E7C1-08EC-48A0-8645-748906F67F32}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Engine\Engine.csproj">
+      <Project>{0F71E5BB-73C8-4F7C-B0EC-3999E1060F10}</Project>
+      <Name>Engine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ForexSuite\ForexSuite.csproj">
+      <Project>{5C1F3C97-E09D-48F2-AF4D-631359D767DB}</Project>
+      <Name>ForexSuite</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Genetic\Genetic.csproj">
+      <Project>{2EFAA327-1789-4438-B9F5-E83ACAE12DB2}</Project>
+      <Name>Genetic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Log4Smart\Log4Smart.csproj">
+      <Project>{19014FBC-1C8C-4391-8BDC-938328BEE567}</Project>
+      <Name>Log4Smart</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MartinGale\MartinGale.csproj">
+      <Project>{AA7FF419-EEAF-408B-910C-73E3BCCCD0AF}</Project>
+      <Name>MartinGale</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mathematics\Mathematics.csproj">
+      <Project>{CE36C987-82B3-48D3-9DAA-4CF9F047FB6E}</Project>
+      <Name>Mathematics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MetaHosts\FxAdvisorCore\FxAdvisorCore.csproj">
+      <Project>{62B79DB2-9C42-4847-8FB7-0F97B13FC154}</Project>
+      <Name>FxAdvisorCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ResultCommon\ResultBusinessEntity.csproj">
+      <Project>{7A360BBD-7674-4CBA-84A7-41D7A5E99C21}</Project>
+      <Name>ResultBusinessEntity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StrategyCommon\StrategyCommon.csproj">
+      <Project>{9A17BAB5-0979-430F-B7CC-1C6225CFD37A}</Project>
+      <Name>StrategyCommon</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

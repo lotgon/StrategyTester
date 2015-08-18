@@ -1,0 +1,6 @@
+"EUR/USD Buy"
+"EUR/USD Sell"
+"EUR/JPY Buy"
+"EUR/JPY Sell"
+"USD/JPY Buy"
+"USD/JPY Sell"

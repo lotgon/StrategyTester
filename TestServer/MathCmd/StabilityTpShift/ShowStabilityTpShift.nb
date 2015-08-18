@@ -1,0 +1,207 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      7269,        198]
+NotebookOptionsPosition[      7026,        185]
+NotebookOutlinePosition[      7369,        200]
+CellTagsIndexPosition[      7326,        197]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"root", " ", "=", " ", 
+   RowBox[{"NotebookDirectory", "[", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"colors", " ", "=", 
+   RowBox[{"{", 
+    RowBox[{"Red", ",", " ", "Green", ",", " ", "Black"}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"name", " ", "=", " ", "\"\<IS_NZDUSD_20100220.out\>\""}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"path", " ", "=", " ", 
+   RowBox[{"StringJoin", "[", 
+    RowBox[{"root", ",", " ", "name"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"raw", " ", "=", 
+   RowBox[{"Import", "[", "path", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"data", " ", "=", " ", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"pixels", " ", "=", " ", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"index", " ", "=", " ", "1"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"values", " ", "=", " ", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"tps", "=", " ", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"shifts", " ", "=", " ", 
+    RowBox[{"{", "}"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"While", "[", 
+   RowBox[{
+    RowBox[{"index", "\[LessEqual]", " ", 
+     RowBox[{"Length", "[", "raw", "]"}]}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"row", " ", "=", " ", 
+      RowBox[{"raw", "[", 
+       RowBox[{"[", "index", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Length", "[", "row", "]"}], " ", "\[NotEqual]", " ", "3"}], 
+       ",", " ", 
+       RowBox[{"Break", "[", "]"}]}], "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"data", " ", "=", " ", 
+      RowBox[{"Append", "[", 
+       RowBox[{"data", ",", " ", "row"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"values", " ", "=", " ", 
+      RowBox[{"Append", "[", 
+       RowBox[{"values", ",", " ", 
+        RowBox[{"row", "[", 
+         RowBox[{"[", "3", "]"}], "]"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"tps", " ", "=", " ", 
+      RowBox[{"Append", "[", 
+       RowBox[{"tps", ",", " ", 
+        RowBox[{"row", "[", 
+         RowBox[{"[", "1", "]"}], "]"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"shifts", "=", " ", 
+      RowBox[{"Append", "[", 
+       RowBox[{"shifts", ",", " ", 
+        RowBox[{"row", "[", 
+         RowBox[{"[", "2", "]"}], "]"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"++", "index"}]}]}], "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"a", " ", "=", " ", 
+   RowBox[{"Min", "[", "values", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"b", " ", "=", 
+   RowBox[{"Max", "[", "values", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"graphs", " ", "=", 
+    RowBox[{"{", 
+     RowBox[{"ListPlot3D", "[", 
+      RowBox[{"data", ",", 
+       RowBox[{"PlotStyle", "\[Rule]", " ", "Green"}]}], "]"}], "}"}]}], 
+   ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"++", "index"}], ";"}], "\[IndentingNewLine]", 
+  "\[IndentingNewLine]", " "}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"While", "[", 
+   RowBox[{
+    RowBox[{"index", " ", "\[LessEqual]", " ", 
+     RowBox[{"Length", "[", "raw", "]"}]}], ",", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"row", " ", "=", " ", 
+      RowBox[{"raw", "[", 
+       RowBox[{"[", "index", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"tp", " ", "=", " ", 
+      RowBox[{"row", "[", 
+       RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"shift", " ", "=", " ", 
+      RowBox[{"row", "[", 
+       RowBox[{"[", "2", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"g", " ", "=", " ", 
+      RowBox[{"ParametricPlot3D", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"tp", ",", " ", "shift", ",", " ", "t"}], "}"}], ",", " ", 
+        RowBox[{"{", 
+         RowBox[{"t", ",", " ", "a", ",", "b"}], "}"}], ",", " ", 
+        RowBox[{"PlotStyle", "\[Rule]", "Red"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Print", "[", 
+      RowBox[{
+      "\"\<[TP = \>\"", ",", " ", "tp", ",", " ", "\"\<; shift = \>\"", ",", 
+       " ", "shift", ",", " ", "\"\<] = \>\"", ",", " ", 
+       RowBox[{"row", "[", 
+        RowBox[{"[", "3", "]"}], "]"}]}], "]"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"graphs", " ", "=", " ", 
+      RowBox[{"Append", "[", 
+       RowBox[{"graphs", ",", " ", "g"}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"++", "index"}]}]}], "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"threshold", " ", "=", 
+   RowBox[{"1", " ", "-", 
+    RowBox[{"StandardDeviation", "[", "values", "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"plane", " ", "=", " ", 
+    RowBox[{"Plot3D", "[", 
+     RowBox[{"threshold", ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"x", ",", " ", 
+        RowBox[{"Min", "[", "tps", "]"}], ",", " ", 
+        RowBox[{"Max", "[", "tps", "]"}]}], "}"}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"y", ",", " ", 
+        RowBox[{"Min", "[", "shifts", "]"}], ",", " ", 
+        RowBox[{"Max", "[", "shifts", "]"}]}], "}"}], ",", " ", 
+      RowBox[{"PlotStyle", "\[Rule]", "Blue"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"graphs", " ", "=", " ", 
+   RowBox[{"Append", "[", 
+    RowBox[{"graphs", ",", " ", "plane"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Show", "[", 
+  RowBox[{"graphs", ",", " ", 
+   RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.5071454000604997`*^9, 3.5071454004973*^9}, {
+   3.5071454459858036`*^9, 3.5071459585559034`*^9}, {3.507145995356368*^9, 
+   3.507146040814848*^9}, {3.507146093823741*^9, 3.5071461273638*^9}, {
+   3.507146192088314*^9, 3.50714630403411*^9}, {3.5071463711922283`*^9, 
+   3.5071464169627085`*^9}, {3.5071464676939983`*^9, 
+   3.5071467932041693`*^9}, {3.50714685014427*^9, 3.5071469018895607`*^9}, {
+   3.5071471560755005`*^9, 3.507147182174346*^9}, {3.5071472375064535`*^9, 
+   3.5071472393940573`*^9}, 3.507147351747589*^9, {3.5071794980761747`*^9, 
+   3.5071795000392866`*^9}, {3.5071797492425404`*^9, 3.5071798521594267`*^9}}]
+},
+WindowSize->{1584, 743},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"8.0 for Microsoft Windows (64-bit) (November 7, 2010)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 6465, 163, 812, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

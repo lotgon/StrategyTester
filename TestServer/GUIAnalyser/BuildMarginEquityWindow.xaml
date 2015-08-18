@@ -1,0 +1,17 @@
+﻿<Window x:Class="GUIAnalyser.BuildMarginEquityWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:sChooser="clr-namespace:GUIAnalyser"
+        Title="AnalyseStrategyeMarginEquityWindow" Height="305" Width="406">
+    <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+        <sChooser:SymbolChooser x:Name="symbolChooser" Width="Auto"/>
+        <StackPanel Grid.Column="1">
+            <Button Name="ButtonStart" Click="Start_Click" Margin="5">Start</Button>
+        </StackPanel>
+        
+    </Grid>
+</Window>
